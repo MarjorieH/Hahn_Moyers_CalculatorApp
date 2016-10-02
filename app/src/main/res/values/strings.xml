@@ -10,7 +10,7 @@
     <string name="button8">8</string>
     <string name="button9">9</string>
     <string name="button0">0</string>
-    <string name="button.">.</string>
+    <string name="buttonperiod">.</string>
     <string name="buttonminus">-</string>
     <string name="buttonplus">+</string>
     <string name="buttoneq">=</string>
