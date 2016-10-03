@@ -14,19 +14,17 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    double num1;
-    double num2;
-
     // allocate variables for buttons
     private Button button0, button1, button2, button3, button4, button5, button6,
             button7, button8, button9, buttonplus, buttonminus, buttonX, buttondiv, buttoneq, buttonperiod, buttonC, buttonB;
 
     // allocate variables for text calculation view
     private TextView calcView;
-
     private String op1 = "";
     private String op2 = "";
     private String operator = "";
+    private double num1 = 0;
+    private double num2 = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +79,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonB.setOnClickListener(this);
 
 
+
     }
 
 
@@ -89,130 +88,108 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch(view.getId()) {
             case R.id.button0:
                 if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "0");
+                    num1 = Double.parseDouble(op1 = op1 + "0");
                 }
                 else {
-                    num2 = Double.parseDouble(op2 += "0");
+                    num2 = Double.parseDouble(op2 = op2 + "0");
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
             case R.id.button1:
                 if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "1");
+                    num1 = Double.parseDouble(op1 = op1 + "1");
                 }
                 else {
-                    num2 = Double.parseDouble(op2 += "1");
+                    num2 = Double.parseDouble(op2 = op2 + "1");
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
             case R.id.button2:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "2");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "2");
-                }
-                calcView.setText(op1 + operator + op2);
+
+                calcView.setText(character + "2");
                 break;
-            case R.id.button3:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "3");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "3");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button3:
+                calcView.setText(character + "3");
                 break;
-            case R.id.button4:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "4");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "4");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button4:
+                calcView.setText(character + "4");
                 break;
-            case R.id.button5:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "5");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "5");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button5:
+                calcView.setText(character + "5");
                 break;
-            case R.id.button6:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "6");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "6");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button6:
+                calcView.setText(character + "6");
                 break;
-            case R.id.button7:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "7");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "7");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button7:
+                calcView.setText(character + "7");
                 break;
-            case R.id.button8:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "8");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "8");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button8:
+                calcView.setText(character + "8");
                 break;
-            case R.id.button9:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "9");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "9");
-                }
-                calcView.setText(op1 + operator + op2);
+            case button9:
+                calcView.setText(character + "9");
                 break;
-            case R.id.buttonplus:
+            case buttonplus:
                 calcView.setText(character + " + ");
                 break;
-            case R.id.buttonminus:
+            case buttonminus:
                 calcView.setText(character + " - ");
                 break;
-            case R.id.buttonX:
+            case buttonX:
                 calcView.setText(character + " x ");
                 break;
-            case R.id.buttondiv:
+            case buttondiv:
                 calcView.setText(character + " / ");
                 break;
-            case R.id.buttoneq:
+            case buttoneq:
+                if (operator == "" || op2 == "") {
+                    // do nothing
+                }
+                else if (operator == " + ") {
+                    num1 = num1 + num2;
+                    op1 = Double.toString(num1);
+                    num2 = 0;
+                    op2 = "";
+                    operator = "";
+                    calcView.setText("op1");
+                }
+                else if (operator == " - ") {
+                    num1 = num1 - num2;
+                    op1 = Double.toString(num1);
+                    num2 = 0;
+                    op2 = "";
+                    operator = "";
+                    calcView.setText("op1");
+                }
+                else if (operator == " / ") {
+                    num1 = num1 / num2;
+                    op1 = Double.toString(num1);
+                    num2 = 0;
+                    op2 = "";
+                    operator = "";
+                    calcView.setText("op1");
+                }
+                else if (operator == " x ") {
+                    num1 = num1 * num2;
+                    op1 = Double.toString(num1);
+                    num2 = 0;
+                    op2 = "";
+                    operator = "";
+                    calcView.setText("op1");
+                }
                 break;
-            case R.id.buttonperiod:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += "1");
-                }
-                else {
-                    num2 = Double.parseDouble(op2 += "1");
-                }
-                calcView.setText(op1 + operator + op2);
+            case buttonperiod:
+                calcView.setText(character + ".");
                 break;
             case buttonC:
-                op1 = op2 = operator = "";
-                calcView.setText(op1 + operator + op2);
+                character = "";
+                num1 = num2 = 0;
+                calcView.setText("");
                 break;
             case buttonB:
-                if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 = op1.substring(0, op1.length()-1));
-                }
-                else {
-                    num2 = Double.parseDouble(op1 = op2.substring(0, op2.length()-1));
-                }
-                calcView.setText(op1 + operator + op2);
                 break;
+
+
         }
 
     }
