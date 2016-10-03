@@ -41,24 +41,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void displayCalc() {
 
         // initialize button variables, assigned by ID.
-        button0 = (Button) findViewById(button0);
-        button1 = (Button) findViewById(button1);
-        button2 = (Button) findViewById(button2);
-        button3 = (Button) findViewById(button3);
-        button4 = (Button) findViewById(button4);
-        button5 = (Button) findViewById(button5);
-        button6 = (Button) findViewById(button6);
-        button7 = (Button) findViewById(button7);
-        button8 = (Button) findViewById(button8);
-        button9 = (Button) findViewById(button9);
-        buttonplus = (Button) findViewById(buttonplus);
-        buttonminus = (Button) findViewById(buttonminus);
-        buttonX = (Button) findViewById(buttonX);
-        buttondiv = (Button) findViewById(buttondiv);
-        buttoneq = (Button) findViewById(buttoneq);
-        buttonperiod = (Button) findViewById(buttonperiod);
-        buttonC = (Button) findViewById(buttonC);
-        buttonB = (Button) findViewById(buttonB);
+        button0 = (Button) findViewById(R.id.button0);
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+        button5 = (Button) findViewById(R.id.button5);
+        button6 = (Button) findViewById(R.id.button6);
+        button7 = (Button) findViewById(R.id.button7);
+        button8 = (Button) findViewById(R.id.button8);
+        button9 = (Button) findViewById(R.id.button9);
+        buttonplus = (Button) findViewById(R.id.buttonplus);
+        buttonminus = (Button) findViewById(R.id.buttonminus);
+        buttonX = (Button) findViewById(R.id.buttonX);
+        buttondiv = (Button) findViewById(R.id.buttondiv);
+        buttoneq = (Button) findViewById(R.id.buttoneq);
+        buttonperiod = (Button) findViewById(R.id.buttonperiod);
+        buttonC = (Button) findViewById(R.id.buttonC);
+        buttonB = (Button) findViewById(R.id.buttonB);
 
         // initialize text calculation view, assigned by ID.
         calcView = (TextView) findViewById(calcView);
@@ -90,7 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
 
         switch(view.getId()) {
-            case button0:
+            case R.id.button0:
                 if (operator.equals("")) {
                     num1 = Double.parseDouble(op1 = op1 + "0");
                 }
@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
-            case button1:
+            case R.id.button1:
                 if (operator.equals("")) {
                     num1 = Double.parseDouble(op1 = op1 + "1");
                 }
@@ -108,7 +108,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
-            case button2:
+            case R.id.button2:
 
                 calcView.setText(character + "2");
                 break;
