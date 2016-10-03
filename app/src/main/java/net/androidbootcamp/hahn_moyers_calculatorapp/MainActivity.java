@@ -179,7 +179,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (operator.equals("")) {
                     operator = " + ";
                 }
-                calcView.setText(op1 + operator);
+                calcView.setText(op1 + operator + op2);
                 break;
             case R.id.buttonminus:
                 if (op1.equals("") && operator.equals("") && op2.equals("")) {
@@ -189,9 +189,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 else if (!op1.equals("") && operator.equals("") && op2.equals("")) {
                     operator = " - ";
                 }
-                else {
+                else if (!op1.equals("") && !operator.equals("") && op2.equals("")) {
                     op2 = "-";
                     num2 = -1;
+                }
+                else {
+                    // do nothing
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
@@ -228,12 +231,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     calcView.setText(op1);
                 }
                 else if (operator == " / ") {
-                    num1 = num1 / num2;
-                    op1 = Double.toString(num1);
-                    num2 = 0;
-                    op2 = "";
-                    operator = "";
-                    calcView.setText(op1);
+                    if (num2 == 0) {
+                        calcView.setText("err: cannot divide by zero");
+                    }
+
+                    else {
+                        num1 = num1 / num2;
+                        op1 = Double.toString(num1);
+                        num2 = 0;
+                        op2 = "";
+                        operator = "";
+                        calcView.setText(op1);
+                    }
                 }
                 else if (operator == " x ") {
                     num1 = num1 * num2;
@@ -280,19 +289,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.buttonB:
 
-                // if screen is empty / nothing in current calculation, there's nothing to clear so
+                // if screen is empty / nothing in current calculation, there's nothing to clear
                 // so ignore clear button.
                 if (op1.equals("")) {
                     // do nothing
                 }
 
                 // else if there is content in the first operand but operator and second operand
-                // is empty
-
+                // are empty, change the first operand
                 else if (!op1.equals("") && operator.equals("") && op2.equals("") ) {
 
                     // if the length of the first operand is 1, reset operand 1
-                    if (op1.length() <= 1) {
+                    if (op1.length() == 1) {
                         op1 = "";
                         num1 = 0;
                     }
@@ -300,7 +308,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // otherwise if length of first operand is n > 1, recreate operand 1 as a
                     // substring of the original operand minus the last character.
                     else {
-                        num1 = Double.parseDouble(op1 = op1.substring(0, op1.length() - 1));
+                        op1 = op1.substring(0, op1.length() - 1);
+
+                        if (op1.equals("-")) {
+                            // do nothing
+                        }
+
+                        else {
+                            num1 = Double.parseDouble(op1);
+                        }
                     }
 
                     calcView.setText(op1);
@@ -308,10 +324,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 // otherwise, if there is content in the first operand and operator but nothing in
                 // the second operand, reset the operator
-                else if (!op1.equals("") && operator.equals("") && op2.equals("")) {
-                    calcView.setText(op1);
+                else if (!operator.equals("") && op2.equals("")) {
                     operator = "";
-
+                    calcView.setText(op1);
                 }
 
                 // else, there is content in the first operand, operator, and second operand -- so
@@ -326,15 +341,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                     // if operand is length > 1, recreate operand as a substring minus the last
                     // character of the original operand
+
                     else {
-                        num2 = Double.parseDouble(op2 = op2.substring(0, op2.length() - 1));
+                        op2 = op2.substring(0, op2.length() - 1);
+                        if (op2.equals("-")) {
+                            // do nothing
+                        }
+                        else {
+                            num2 = Double.parseDouble(op2);
+                        }
+
                     }
+
                     calcView.setText(op1 + operator + op2);
                 }
 
                 break;
         }
-
     }
 //
 //    @Override
