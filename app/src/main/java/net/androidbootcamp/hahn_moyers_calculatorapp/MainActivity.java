@@ -275,7 +275,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // do nothing
                 }
                 else if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 = op1.substring(0, op1.length()-1));
+                    if (op1.length() == 1) {
+                        op1 = "";
+                    }
+                    else {
+                        num1 = Double.parseDouble(op1 = op1.substring(0, op1.length() - 1));
+                    }
                     calcView.setText(op1);
                 }
                 else if (!operator.equals("") && op2 == "") {
@@ -283,7 +288,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     operator = "";
                 }
                 else {
-                    num2 = Double.parseDouble(op2 = op2.substring(0, op2.length()-1));
+                    if (op2.length() == 1) {
+                       op2 = "";
+                    }
+                    else {
+                        num2 = Double.parseDouble(op2 = op2.substring(0, op2.length() - 1));
+                    }
                     calcView.setText(op1 + operator + op2);
                 }
 
