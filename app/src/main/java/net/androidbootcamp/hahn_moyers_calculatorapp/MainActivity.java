@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-
 public class MainActivity extends Activity implements View.OnClickListener {
 
     // allocate variables for buttons
@@ -239,29 +238,55 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.buttonperiod:
                 if (operator.equals("")) {
-                    num1 = Double.parseDouble(op1 += ".");
+                    if (op1.equals("")) {
+                        num1 = Double.parseDouble(op1 += "0.");
+                    }
+                    else {
+                        if (op1.contains(".")) {
+                            num1 = Double.parseDouble(op1);
+                        }
+                        else {
+                            num1 = Double.parseDouble(op1 += ".");
+                        }
+                    }
                 }
                 else {
-                    num2 = Double.parseDouble(op2 += ".");
+                    if (op2.equals("")) {
+                        num2 = Double.parseDouble(op2 += "0.");
+                    }
+                    else {
+                        if (op2.contains(".")) {
+                            num2 = Double.parseDouble(op2);
+                        }
+                        else {
+                            num2 = Double.parseDouble(op2 += ".");
+                        }
+                    }
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
             case R.id.buttonC:
                 op1 = op2 = operator = "";
                 num1 = num2 = 0;
-                calcView.setText(op1 + operator + op2);
+                calcView.setText("0");
                 break;
             case R.id.buttonB:
-                if (operator.equals("")) {
+                if (op1.equals("")) {
+                    // do nothing
+                }
+                else if (operator.equals("")) {
                     num1 = Double.parseDouble(op1 = op1.substring(0, op1.length()-1));
+                    calcView.setText(op1);
                 }
                 else if (!operator.equals("") && op2 == "") {
-                    num2 = Double.parseDouble(op1 = op2.substring(0, op2.length()-3));
+                    calcView.setText(op1);
+                    operator = "";
                 }
                 else {
-                    num2 = Double.parseDouble(op1 = op1.substring(0, op1.length()-1));
+                    num2 = Double.parseDouble(op2 = op2.substring(0, op2.length()-1));
+                    calcView.setText(op1 + operator + op2);
                 }
-                calcView.setText(op1 + operator + op2);
+
                 break;
         }
 
