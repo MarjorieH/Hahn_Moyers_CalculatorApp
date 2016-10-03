@@ -95,13 +95,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 calcView.setText(op1 + operator + op2);
                 break;
             case button1:
-                calcView.setText(character + "1");
-                if (num1 == 0) {
-                    num1 == 1;
+                if (operator.equals("")) {
+                    num1 = Double.parseDouble(op1 = op1 + "1");
                 }
                 else {
-                    num2 == 1;
+                    num2 = Double.parseDouble(op2 = op2 + "1");
                 }
+                calcView.setText(op1 + operator + op2);
                 break;
             case button2:
 
