@@ -10,7 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+
 public class MainActivity extends Activity implements View.OnClickListener {
+
+    double num1;
+    double num2;
 
     // allocate variables for buttons
     private Button button0, button1, button2, button3, button4, button5, button6,
