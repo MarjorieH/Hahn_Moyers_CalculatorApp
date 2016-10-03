@@ -176,19 +176,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
-            case buttonplus:
-                calcView.setText(character + " + ");
+            case R.id.buttonplus:
+                operator = " + ";
+                calcView.setText(op1 + operator);
                 break;
-            case buttonminus:
-                calcView.setText(character + " - ");
+            case R.id.buttonminus:
+                operator = " - ";
+                calcView.setText(op1 + operator);
                 break;
-            case buttonX:
-                calcView.setText(character + " x ");
+            case R.id.buttonX:
+                operator = " x ";
+                calcView.setText(op1 + operator);
                 break;
-            case buttondiv:
-                calcView.setText(character + " / ");
+            case R.id.buttondiv:
+                operator = " / ";
+                calcView.setText(op1 + operator);
                 break;
-            case buttoneq:
+            case R.id.buttoneq:
                 if (operator == "" || op2 == "") {
                     // do nothing
                 }
