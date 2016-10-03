@@ -176,16 +176,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 calcView.setText(op1 + operator + op2);
                 break;
             case R.id.buttonplus:
-                if (operator == "") {
+                if (operator.equals("")) {
                     operator = " + ";
-                    calcView.setText(op1 + operator);
                 }
+                calcView.setText(op1 + operator);
                 break;
             case R.id.buttonminus:
-                if (operator == "") {
-                    operator = " - ";
-                    calcView.setText(op1 + operator);
+                if (op1.equals("") && operator.equals("") && op2.equals("")) {
+                    op1 = "-";
+                    num1 = -1;
                 }
+                else if (!op1.equals("") && operator.equals("") && op2.equals("")) {
+                    operator = " - ";
+                }
+                else {
+                    op2 = "-";
+                    num2 = -1;
+                }
+                calcView.setText(op1 + operator + op2);
                 break;
             case R.id.buttonX:
                 if (operator == "") {
@@ -271,26 +279,53 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 calcView.setText("0");
                 break;
             case R.id.buttonB:
+
+                // if screen is empty / nothing in current calculation, there's nothing to clear so
+                // so ignore clear button.
                 if (op1.equals("")) {
                     // do nothing
                 }
-                else if (operator.equals("")) {
-                    if (op1.length() == 1) {
+
+                // else if there is content in the first operand but operator and second operand
+                // is empty
+
+                else if (!op1.equals("") && operator.equals("") && op2.equals("") ) {
+
+                    // if the length of the first operand is 1, reset operand 1
+                    if (op1.length() <= 1) {
                         op1 = "";
+                        num1 = 0;
                     }
+
+                    // otherwise if length of first operand is n > 1, recreate operand 1 as a
+                    // substring of the original operand minus the last character.
                     else {
                         num1 = Double.parseDouble(op1 = op1.substring(0, op1.length() - 1));
                     }
+
                     calcView.setText(op1);
                 }
-                else if (!operator.equals("") && op2 == "") {
+
+                // otherwise, if there is content in the first operand and operator but nothing in
+                // the second operand, reset the operator
+                else if (!op1.equals("") && operator.equals("") && op2.equals("")) {
                     calcView.setText(op1);
                     operator = "";
+
                 }
+
+                // else, there is content in the first operand, operator, and second operand -- so
+                // change the second operand
                 else {
+
+                    // if length of second operand is 1, reset operand 2
                     if (op2.length() == 1) {
-                       op2 = "";
+                        op2 = "";
+                        num2 = 0;
                     }
+
+                    // if operand is length > 1, recreate operand as a substring minus the last
+                    // character of the original operand
                     else {
                         num2 = Double.parseDouble(op2 = op2.substring(0, op2.length() - 1));
                     }
