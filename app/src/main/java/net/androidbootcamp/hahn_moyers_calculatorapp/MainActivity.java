@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonB = (Button) findViewById(R.id.buttonB);
 
         // initialize text calculation view, assigned by ID.
-        calcView = (TextView) findViewById(calcView);
+        calcView = (TextView) findViewById(R.id.calcView);
 
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
@@ -202,7 +202,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     num2 = 0;
                     op2 = "";
                     operator = "";
-                    calcView.setText("op1");
+                    calcView.setText(op1);
                 }
                 else if (operator == " - ") {
                     num1 = num1 - num2;
@@ -210,7 +210,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     num2 = 0;
                     op2 = "";
                     operator = "";
-                    calcView.setText("op1");
+                    calcView.setText(op1);
                 }
                 else if (operator == " / ") {
                     num1 = num1 / num2;
@@ -218,7 +218,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     num2 = 0;
                     op2 = "";
                     operator = "";
-                    calcView.setText("op1");
+                    calcView.setText(op1);
                 }
                 else if (operator == " x ") {
                     num1 = num1 * num2;
@@ -226,7 +226,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     num2 = 0;
                     op2 = "";
                     operator = "";
-                    calcView.setText("op1");
+                    calcView.setText(op1);
                 }
                 break;
             case R.id.buttonperiod:
@@ -238,11 +238,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 calcView.setText(op1 + operator + op2);
                 break;
-            case buttonC:
+            case R.id.buttonC:
                 op1 = op2 = operator = "";
                 calcView.setText(op1 + operator + op2);
                 break;
-            case buttonB:
+            case R.id.buttonB:
                 if (operator.equals("")) {
                     num1 = Double.parseDouble(op1 = op1.substring(0, op1.length()-1));
                 }
