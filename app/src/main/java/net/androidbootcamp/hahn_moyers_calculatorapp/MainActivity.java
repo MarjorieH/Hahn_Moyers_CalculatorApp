@@ -8,7 +8,7 @@ import android.app.Activity;
 //import android.support.v4.app.NavUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -17,7 +17,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
             button7, button8, button9, buttonplus, buttonminus, buttonX, buttondiv, buttoneq, buttonperiod, buttonC, buttonB;
 
     // allocate variables for text calculation view
-    private EditText calcView;
+    private TextView calcView;
+
+    private String op1 = "";
+    private String op2 = "";
+    private String operator = "";
+    private double num1 = 0;
+    private double num2 = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonB = (Button) findViewById(buttonB);
 
         // initialize text calculation view, assigned by ID.
-        calcView = (EditText) findViewById(calcView);
+        calcView = (TextView) findViewById(calcView);
 
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
@@ -70,7 +76,85 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonperiod.setOnClickListener(this);
         buttonC.setOnClickListener(this);
         buttonB.setOnClickListener(this);
-        
+
+
+
+    }
+
+
+    public void onClick(View view) {
+
+        switch(view.getId()) {
+            case button0:
+                if (operator.equals("")) {
+                    num1 = Double.parseDouble(op1 = op1 + "0");
+                }
+                else {
+                    num2 = Double.parseDouble(op2 = op2 + "0");
+                }
+                calcView.setText(op1 + operator + op2);
+                break;
+            case button1:
+                calcView.setText(character + "1");
+                if (num1 == 0) {
+                    num1 == 1;
+                }
+                else {
+                    num2 == 1;
+                }
+                break;
+            case button2:
+
+                calcView.setText(character + "2");
+                break;
+            case button3:
+                calcView.setText(character + "3");
+                break;
+            case button4:
+                calcView.setText(character + "4");
+                break;
+            case button5:
+                calcView.setText(character + "5");
+                break;
+            case button6:
+                calcView.setText(character + "6");
+                break;
+            case button7:
+                calcView.setText(character + "7");
+                break;
+            case button8:
+                calcView.setText(character + "8");
+                break;
+            case button9:
+                calcView.setText(character + "9");
+                break;
+            case buttonplus:
+                calcView.setText(character + " + ");
+                break;
+            case buttonminus:
+                calcView.setText(character + " - ");
+                break;
+            case buttonX:
+                calcView.setText(character + " x ");
+                break;
+            case buttondiv:
+                calcView.setText(character + " / ");
+                break;
+            case buttoneq:
+                break;
+            case buttonperiod:
+                calcView.setText(character + ".");
+                break;
+            case buttonC:
+                character = "";
+                num1 = num2 = 0;
+                calcView.setText("");
+                break;
+            case buttonB:
+                break;
+
+
+        }
 
     }
 //
