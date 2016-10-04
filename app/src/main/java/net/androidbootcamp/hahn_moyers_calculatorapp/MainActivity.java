@@ -255,7 +255,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.buttonperiod:
                 if (operator.equals("")) {
-                    if (op1.equals("")) {
+                    if (op1.equals("") || op1.equals("-")) {
                         num1 = Double.parseDouble(op1 += "0.");
                     }
                     else {
@@ -268,7 +268,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     }
                 }
                 else {
-                    if (op2.equals("")) {
+                    if (op2.equals("") || op2.equals("-")) {
                         num2 = Double.parseDouble(op2 += "0.");
                     }
                     else {
